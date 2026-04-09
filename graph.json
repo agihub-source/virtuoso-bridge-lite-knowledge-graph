@@ -1,0 +1,119 @@
+{
+  "metadata": {
+    "source": "virtuoso-bridge-lite",
+    "title": "virtuoso-bridge-lite: Python Bridge for Cadence Virtuoso",
+    "author": "TokenZhang (Arcadia-1)",
+    "github": "https://github.com/Arcadia-1/virtuoso-bridge-lite",
+    "website": "https://virtuoso-bridge.tokenzhang.com",
+    "generated": "2026-04-09"
+  },
+  "nodes": [
+    {"id": "virtuoso_bridge", "name": "virtuoso-bridge-lite", "type": "system", "degree": 15},
+    {"id": "virtuoso_client", "name": "VirtuosoClient", "type": "class", "degree": 12},
+    {"id": "ssh_client", "name": "SSHClient", "type": "class", "degree": 5},
+    {"id": "spectre_simulator", "name": "SpectreSimulator", "type": "class", "degree": 6},
+    {"id": "schematic_editor", "name": "SchematicEditor", "type": "class", "degree": 8},
+    {"id": "layout_editor", "name": "LayoutEditor", "type": "class", "degree": 7},
+    {"id": "skill_ipc", "name": "SKILL IPC", "type": "mechanism", "degree": 8},
+    {"id": "ramic_bridge", "name": "ramic_bridge.il", "type": "script", "degree": 6},
+    {"id": "ssh_tunnel", "name": "SSH Tunnel", "type": "feature", "degree": 4},
+    {"id": "jump_host", "name": "Jump Host", "type": "feature", "degree": 3},
+    {"id": "auto_reconnect", "name": "Auto Reconnect", "type": "feature", "degree": 2},
+    {"id": "add_instance", "name": "add_instance()", "type": "api", "degree": 5},
+    {"id": "add_wire", "name": "add_wire()", "type": "api", "degree": 4},
+    {"id": "add_net_label", "name": "add_net_label_to_instance_term()", "type": "api", "degree": 5},
+    {"id": "add_pin", "name": "add_pin_to_instance_term()", "type": "api", "degree": 4},
+    {"id": "export_netlist", "name": "export_netlist_cdl()", "type": "api", "degree": 3},
+    {"id": "add_polygon", "name": "add_polygon()", "type": "api", "degree": 3},
+    {"id": "add_via", "name": "add_via()", "type": "api", "degree": 3},
+    {"id": "bus_routing", "name": "bus_routing()", "type": "api", "degree": 3},
+    {"id": "execute_skill", "name": "execute_skill()", "type": "api", "degree": 6},
+    {"id": "load_il", "name": "load_il()", "type": "api", "degree": 5},
+    {"id": "ade_maestro", "name": "ADE Maestro", "type": "tool", "degree": 5},
+    {"id": "ade_explorer", "name": "ADE Explorer", "type": "tool", "degree": 4},
+    {"id": "mae_create_test", "name": "maeCreateTest()", "type": "skill_api", "degree": 3},
+    {"id": "mae_run_simulation", "name": "maeRunSimulation()", "type": "skill_api", "degree": 3},
+    {"id": "transient_sim", "name": "Transient Analysis", "type": "simulation", "degree": 3},
+    {"id": "dc_ac_sim", "name": "DC+AC Analysis", "type": "simulation", "degree": 3},
+    {"id": "pss_pnoise_sim", "name": "PSS+Pnoise Analysis", "type": "simulation", "degree": 2},
+    {"id": "psf_parser", "name": "PSF Parser", "type": "component", "degree": 3},
+    {"id": "skillbridge", "name": "skillbridge", "type": "related_work", "degree": 2},
+    {"id": "ai_agent", "name": "AI Agent", "type": "user", "degree": 4},
+    {"id": "cli", "name": "CLI", "type": "interface", "degree": 3},
+    {"id": "local_mode", "name": "Local Mode", "type": "mode", "degree": 3},
+    {"id": "remote_mode", "name": "Remote Mode", "type": "mode", "degree": 3}
+  ],
+  "edges": [
+    {"source": "virtuoso_bridge", "target": "virtuoso_client", "relation": "provides"},
+    {"source": "virtuoso_bridge", "target": "ssh_client", "relation": "provides"},
+    {"source": "virtuoso_bridge", "target": "spectre_simulator", "relation": "provides"},
+    {"source": "virtuoso_bridge", "target": "schematic_editor", "relation": "provides"},
+    {"source": "virtuoso_bridge", "target": "layout_editor", "relation": "provides"},
+    {"source": "virtuoso_bridge", "target": "ai_agent", "relation": "designed_for"},
+    {"source": "virtuoso_client", "target": "ssh_client", "relation": "uses"},
+    {"source": "virtuoso_client", "target": "skill_ipc", "relation": "communicates_via"},
+    {"source": "virtuoso_client", "target": "schematic_editor", "relation": "exposes"},
+    {"source": "virtuoso_client", "target": "layout_editor", "relation": "exposes"},
+    {"source": "virtuoso_client", "target": "execute_skill", "relation": "provides"},
+    {"source": "virtuoso_client", "target": "load_il", "relation": "provides"},
+    {"source": "ssh_client", "target": "ssh_tunnel", "relation": "creates"},
+    {"source": "ssh_client", "target": "jump_host", "relation": "supports"},
+    {"source": "ssh_client", "target": "auto_reconnect", "relation": "handles"},
+    {"source": "skill_ipc", "target": "ramic_bridge", "relation": "uses"},
+    {"source": "ramic_bridge", "target": "execute_skill", "relation": "evaluates"},
+    {"source": "schematic_editor", "target": "add_instance", "relation": "provides"},
+    {"source": "schematic_editor", "target": "add_wire", "relation": "provides"},
+    {"source": "schematic_editor", "target": "add_net_label", "relation": "provides"},
+    {"source": "schematic_editor", "target": "add_pin", "relation": "provides"},
+    {"source": "schematic_editor", "target": "export_netlist", "relation": "provides"},
+    {"source": "layout_editor", "target": "add_polygon", "relation": "provides"},
+    {"source": "layout_editor", "target": "add_via", "relation": "provides"},
+    {"source": "layout_editor", "target": "bus_routing", "relation": "provides"},
+    {"source": "spectre_simulator", "target": "transient_sim", "relation": "runs"},
+    {"source": "spectre_simulator", "target": "dc_ac_sim", "relation": "runs"},
+    {"source": "spectre_simulator", "target": "pss_pnoise_sim", "relation": "runs"},
+    {"source": "spectre_simulator", "target": "psf_parser", "relation": "uses"},
+    {"source": "ade_maestro", "target": "mae_create_test", "relation": "uses"},
+    {"source": "ade_maestro", "target": "mae_run_simulation", "relation": "uses"},
+    {"source": "virtuoso_client", "target": "ade_maestro", "relation": "integrates_with"},
+    {"source": "virtuoso_client", "target": "ade_explorer", "relation": "integrates_with"},
+    {"source": "virtuoso_bridge", "target": "skillbridge", "relation": "extends"},
+    {"source": "virtuoso_bridge", "target": "cli", "relation": "controlled_via"},
+    {"source": "virtuoso_client", "target": "local_mode", "relation": "supports"},
+    {"source": "virtuoso_client", "target": "remote_mode", "relation": "supports"},
+    {"source": "remote_mode", "target": "ssh_tunnel", "relation": "requires"},
+    {"source": "add_net_label", "target": "add_wire", "relation": "complements"}
+  ],
+  "communities": [
+    {
+      "name": "Core Components",
+      "nodes": ["virtuoso_bridge", "virtuoso_client", "skill_ipc", "ramic_bridge"],
+      "description": "核心架构组件：客户端、IPC 通信、SKILL 桥接"
+    },
+    {
+      "name": "Remote Access",
+      "nodes": ["ssh_client", "ssh_tunnel", "jump_host", "auto_reconnect", "remote_mode"],
+      "description": "远程访问功能：SSH 隧道、跳板机、自动重连"
+    },
+    {
+      "name": "Schematic API",
+      "nodes": ["schematic_editor", "add_instance", "add_wire", "add_net_label", "add_pin", "export_netlist"],
+      "description": "原理图编辑 API：实例放置、连线、标签、网表导出"
+    },
+    {
+      "name": "Layout API",
+      "nodes": ["layout_editor", "add_polygon", "add_via", "bus_routing"],
+      "description": "版图编辑 API：多边形、通孔、总线布线"
+    },
+    {
+      "name": "Simulation",
+      "nodes": ["spectre_simulator", "transient_sim", "dc_ac_sim", "pss_pnoise_sim", "psf_parser"],
+      "description": "Spectre 仿真：瞬态、DC+AC、PSS+Pnoise、结果解析"
+    },
+    {
+      "name": "ADE Integration",
+      "nodes": ["ade_maestro", "ade_explorer", "mae_create_test", "mae_run_simulation"],
+      "description": "ADE 集成：Maestro 和 Explorer 仿真管理"
+    }
+  ]
+}
